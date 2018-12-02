@@ -40,6 +40,8 @@ def spawn_ball(direction):
 def new_game():
     global paddle1_pos, paddle2_pos, paddle1_vel, paddle2_vel  # these are numbers
     global score1, score2  # these are ints
+    paddle1_pos = HEIGHT / 2
+    paddle2_pos = HEIGHT / 2
     score1 = 0
     score2 = 0
     spawn_ball(LEFT)
@@ -73,8 +75,8 @@ def draw(canvas):
     condition_right_if_1 = ball_pos[1] >= paddle2_pos - PAD_HEIGHT / 2 - BALL_RADIUS / 2
     condition_right_if_2 = ball_pos[1] <= paddle2_pos + PAD_HEIGHT / 2 + BALL_RADIUS / 2
     condition_right_if_3 = ball_pos[0] >= WIDTH - PAD_WIDTH - BALL_RADIUS
-    condition_right_elif_1 = ball_pos[1] < paddle1_pos - PAD_HEIGHT / 2 - BALL_RADIUS / 2 and condition_right_if_3
-    condition_right_elif_2 = ball_pos[1] > paddle1_pos + PAD_HEIGHT / 2 + BALL_RADIUS / 2 and condition_right_if_3
+    condition_right_elif_1 = ball_pos[1] < paddle2_pos - PAD_HEIGHT / 2 - BALL_RADIUS / 2 and condition_right_if_3
+    condition_right_elif_2 = ball_pos[1] > paddle2_pos + PAD_HEIGHT / 2 + BALL_RADIUS / 2 and condition_right_if_3
     if condition_right_if_1 and condition_right_if_2 and condition_right_if_3:
         ball_vel[1] +=  (ball_vel[1] * 10)/100.0
         ball_vel[0] += (ball_vel[0] * 10)/100.0
